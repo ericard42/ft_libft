@@ -6,7 +6,7 @@
 #    By: ericard <ericard@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/05 15:40:08 by ericard           #+#    #+#              #
-#    Updated: 2019/11/08 09:19:53 by ericard          ###   ########.fr        #
+#    Updated: 2020/08/16 19:34:25 by ericard          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ SRCS		=	ft_atoi.c \
 				ft_putendl_fd.c \
 				ft_putnbr_fd.c \
 
-INCLUDES	=	libft.h
+INCLUDES	=	-I ./includes/
 
 NAME		=	libft.a
 
@@ -61,6 +61,9 @@ all:		$(NAME)
 
 $(NAME):	$(OBJS)
 			ar rcs $(NAME) $(OBJS)
+
+.c.o:
+			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $(<:.c=.o)
 
 clean:
 			$(RM) $(OBJS)
